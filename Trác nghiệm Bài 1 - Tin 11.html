@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Chấm Thi Tin Học - Thầy Giáo 4.0</title>
+    <style>
+        /* Toàn bộ phần CSS giữ nguyên như cũ để làm đẹp giao diện */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding: 20px; }
+        .quiz-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        h2 { color: #2c3e50; text-align: center; }
+        input { width: 96%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .question { margin-top: 20px; margin-bottom: 10px; font-weight: bold; color: #34495e; }
+        .options { list-style: none; padding: 0; }
+        .options li { margin: 10px 0; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .options li:hover { background-color: #e1f5fe; }
+        .options li.selected { background-color: #03a9f4; color: white; border-color: #03a9f4; }
+        button { width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+        #result { margin-top: 20px; text-align: center; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>ÔN TẬP BÀI 1</h2>
+    <hr>
+    <input type="text" id="hoTen" placeholder="Nhập Họ và Tên học sinh">
+    <input type="text" id="lop" placeholder="Nhập Lớp (Ví dụ: 9A1)">
+
+    <div id="quiz">
+        </div>
+
+    <button onclick="submitQuiz()" id="btnSubmit">Nộp Bài & Chấm Điểm</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    // 1. DỮ LIỆU CÂU HỎI
+    const quizData = [
+        { q: "Phát biểu nào sau đây nêu đúng nhất về khái niệm Hệ điều hành (OS)?", options: [ "Là phần mềm ứng dụng dùng để soạn thảo văn bản và duyệt web", "Là tập hợp các chương trình quản lý tài nguyên máy tính và cung cấp môi trường tương tác", "Là thiết bị phần cứng hỗ trợ xử lý dữ liệu đồ họa nhanh hơn", "Là chương trình diệt virus giúp bảo vệ máy tính khỏi mã độc"], answer: 1 },
+       	{ q: "Đâu KHÔNG phải là một trong các chức năng cơ bản của hệ điều hành?", options: ["Quản lý tệp và tổ chức lưu trữ dữ liệu", "Quản lý thiết bị và bộ nhớ RAM, CPU", "Trình chiếu slide và biên tập video ca nhạc", "Điều phối các tiến trình đang chạy"], answer: 2 },
+	{ q: "Sự khác biệt cơ bản giữa giao diện dòng lệnh (Command-line) và giao diện đồ họa (GUI) là gì?", options: ["Giao diện dòng lệnh dễ sử dụng hơn giao diện đồ họa", "Giao diện đồ họa yêu cầu nhập câu lệnh văn bản chính xác", "Giao diện đồ họa tương tác qua biểu tượng, cửa sổ, chuột; trực quan và thân thiện hơn", "Giao diện dòng lệnh không tốn bộ nhớ RAM để hoạt động"], answer: 2 },
+	{ q: "Đặc điểm 'Plug and Play' (Cắm và Chạy) của hệ điều hành máy tính mang lại lợi ích gì?", options: ["Tự động tăng dung lượng lưu trữ của ổ cứng", "Tự động nhận diện và cấu hình thiết bị ngoại vi mới cắm vào mà không cần khởi động lại máy", "Giúp máy tính kết nối Internet tốc độ cao không cần dây", "Giúp tự động sửa chữa các lỗi phần cứng bị hỏng"], answer: 1 },
+	{ q: "Hai hệ điều hành phổ biến nhất trên thiết bị di động hiện nay là:", options: ["Windows và macOS", "MS-DOS và Linux", "Android và iOS", "Ubuntu và Unix"], answer: 2 },
+	{ q: "Đặc điểm nào sau đây là đặc thù riêng của hệ điều hành di động so với hệ điều hành máy tính?", options: ["Hỗ trợ chạy phần mềm Microsoft Word", "Giao diện hỗ trợ màn hình cảm ứng, cử chỉ vuốt chạm và quản lý nguồn điện tiết kiệm pin", "Có khả năng quản lý tệp tin và thư mục", "Cho phép kết nối với máy in qua cổng USB"], answer: 1 },
+	{ q: "Khi bạn mở phần mềm Microsoft Word để gõ văn bản, mối quan hệ giữa Người dùng - Phần mềm ứng dụng - Hệ điều hành - Phần cứng diễn ra theo thứ tự nào?", options: ["Người dùng -> Phần cứng -> Hệ điều hành -> Word", "Người dùng -> Word -> Hệ điều hành -> Phần cứng (Bàn phím, RAM, CPU)", "Word -> Người dùng -> Phần cứng -> Hệ điều hành", "Hệ điều hành -> Người dùng -> Word -> Phần cứng"], answer: 1 },
+	{ q: "Hệ điều hành đóng vai trò là 'môi trường trung gian'. Điều này có nghĩa là gì?", options: ["Nó làm trung gian kết nối giữa người bán và người mua máy tính", "Nó đứng giữa phần mềm ứng dụng và phần cứng, chuyển đổi yêu cầu ứng dụng thành lệnh điều khiển phần cứng", "Nó là cầu nối truyền dữ liệu giữa hai máy tính qua dây mạng", "Nó giúp kết nối màn hình với bàn phím"], answer: 1 },
+	{ q: "Khả năng 'Đa nhiệm' (Multitasking) của hệ điều hành cho phép:", options: ["Nhiều người cùng sử dụng một máy tính tại một thời điểm", " Máy tính chạy đồng thời nhiều chương trình/ứng dụng cùng lúc", "Kết nối máy tính với nhiều màn hình cùng lúc", "Cài đặt cùng lúc nhiều hệ điều hành trên một ổ cứng"], answer: 1 },
+	{ q: "Tại sao trên điện thoại thông minh, hệ điều hành lại cần kiểm soát chặt chẽ quyền truy cập Camera, Micro và Vị trí (GPS) của các ứng dụng?", options: ["Để giúp điện thoại sạc pin nhanh hơn", "Để đảm bảo an toàn bảo mật, riêng tư dữ liệu cá nhân cho người dùng", "Để tăng tốc độ mạng 4G/5G", "Để giảm dung lượng của các phần mềm ứng dụng"], answer: 1 },
+	
+    ];
+
+    let userAnswers = new Array(quizData.length).fill(null);
+
+    // 2. HÀM HIỂN THỊ CÂU HỎI
+    function loadQuiz() {
+        const quizDiv = document.getElementById('quiz');
+        let html = '';
+        quizData.forEach((item, index) => {
+            html += `
+                <div class="question">Câu ${index + 1}: ${item.q}</div>
+                <ul class="options">
+                    ${item.options.map((opt, i) => `<li onclick="selectOption(${index}, ${i}, this)">${opt}</li>`).join('')}
+                </ul>`;
+        });
+        quizDiv.innerHTML = html;
+    }
+
+    function selectOption(qIdx, oIdx, element) {
+        userAnswers[qIdx] = oIdx;
+        const siblings = element.parentElement.children;
+        for (let sib of siblings) sib.classList.remove('selected');
+        element.classList.add('selected');
+    }
+
+    // 3. HÀM CHẤM ĐIỂM VÀ GỬI DỮ LIỆU (VIẾT CHUNG VÀO ĐÂY)
+    async function submitQuiz() {
+        const hoTen = document.getElementById('hoTen').value.trim();
+        const lop = document.getElementById('lop').value.trim();
+
+        if (!hoTen || !lop) {
+            alert("Em điền tên và lớp nhé!");
+            return;
+        }
+
+        let score = 0;
+        quizData.forEach((item, idx) => {
+            if (userAnswers[idx] === item.answer) score++;
+        });
+
+        const finalScore = (score / quizData.length) * 10;
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = "🔄 Đang gửi điểm về máy thầy...";
+
+        // --- KẾT NỐI GOOGLE SHEETS ---
+        // ANH DÁN LINK APPS SCRIPT CỦA ANH VÀO DÒNG DƯỚI ĐÂY
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-r88IGZT95MUe-wEayxQWQmT0njWf58ReGAxoLRYj7nSjYwIwj_ml2rAtYxs3aStg/exec';
+        
+        const payload = {
+            hoTen: hoTen,
+            lop: lop,
+            soCauDung: score,
+            diem: finalScore.toFixed(1)
+        };
+
+        try {
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            resultDiv.innerHTML = `✅ Thành công! <br> Học sinh: ${hoTen} - Lớp: ${lop} <br> Điểm: ${finalScore.toFixed(1)}`;
+            resultDiv.style.color = "#27ae60";
+            
+            // Khóa bài thi
+            document.getElementById('btnSubmit').disabled = true;
+            document.getElementById('btnSubmit').style.background = "#bdc3c7";
+            document.getElementById('btnSubmit').innerText = "ĐÃ LƯU ĐIỂM";
+            document.querySelectorAll('.options li').forEach(li => li.style.pointerEvents = 'none');
+
+        } catch (error) {
+            resultDiv.innerHTML = "❌ Lỗi gửi dữ liệu rồi anh!";
+            resultDiv.style.color = "#e74c3c";
+        }
+    }
+
+    loadQuiz(); // Khởi chạy khi mở trang
+</script>
+
+</body>
+</html>
