@@ -37,10 +37,16 @@
 <script>
     // 1. DỮ LIỆU CÂU HỎI
     const quizData = [
-        { q: "Văn bản chương trình do người lập trình viết bằng ngôn ngữ lập trình bậc cao được gọi là gì?", options: [ "Mã máy (Machine code)", "Mã nguồn (Source code)", "Mã nhị phân (Binary code)", "Phần mềm thương mại (Commercial software)"], answer: 1 },
-	{ q: "", options: [ "", "", "", ""], answer: 1 },
-       	
-	
+        { q: "Phần mềm IBM Watson for Oncology được ứng dụng trong lĩnh vực nào để hỗ trợ đưa ra các chẩn đoán và hướng điều trị?", options: [ "Tài chính - Ngân hàng", "Y học và chăm sóc sức khỏe", "Giao thông vận tải", "Giáo dục"], answer: 1 },
+	{ q: "Ban đầu, hệ chuyên gia là chương trình máy tính được thiết kế dựa trên các yếu tố nào?", options: [ "Dữ liệu thời tiết và bản đồ vệ tinh", "Các thuật toán sinh video tự động", "Các luật suy diễn và tri thức của chuyên gia trong từng lĩnh vực cụ thể", "Khả năng tự động cập nhật chứng từ ngân hàng"], answer: 2 },
+	{ q: "Sự kết hợp giữa AI và công nghệ nào cho phép các nhà khoa học giám sát môi trường tự nhiên và theo dõi tình hình biến đổi khí hậu?", options: [ "IoT (AIoT)", "Blockchain", "Cloud Computing", "3D Printing"], answer: 0 },
+	{ q: "Trong lĩnh vực nông nghiệp, AI giúp người nông dân thực hiện công việc nào sau đây?", options: [ "Thay thế hoàn toàn con người trong mọi khâu tiếp thị nông sản", "Tối ưu hoá quy trình chăm sóc vật nuôi, cây trồng và dự đoán mùa vụ", "Cung cấp tín dụng trực tiếp cho các trang trại", "Tự động thanh toán hóa đơn vật tư nông nghiệp"], answer: 1 },
+	{ q: "Các trợ lý học tập ảo dựa trên AI trong giáo dục hỗ trợ người học và giáo viên bằng cách nào?", options: [ "Tự động cấp bằng tốt nghiệp cho học sinh", "Trả lời câu hỏi, cung cấp hướng dẫn và tài liệu học tập", "Thay thế hoàn toàn giáo viên giảng dạy trên lớp", "Soạn thảo toàn bộ chương trình giáo dục quốc gia"], answer: 1 },
+	{ q: "AI tạo sinh (Generative AI) tập trung vào việc nào sau đây?", options: [ "Chỉ quét và phát hiện vi-rút trên máy tính", "Xây dựng các thuật toán và mô hình có thể tạo nội dung (hình ảnh, âm thanh, văn bản) một cách tự động", "Tăng tốc độ truy cập Internet cá nhân", "Tự động hóa các giao dịch ngân hàng truyền thống"], answer: 1 },
+	{ q: "ChatGPT là một hệ thống xử lý ngôn ngữ tiên tiến do tổ chức/công ty nào phát triển?", options: [ "Google", "Microsoft", "OpenAI", "IBM"], answer: 2 },
+ 	{ q: "Đâu không phải là một trong những cảnh báo/nguy cơ liên quan đến sự phát triển của AI được nêu trong bài học?", options: [ "Áp lực thất nghiệp do tự động hóa", "Ảnh hưởng quyền riêng tư", "Làm giảm hoàn toàn tốc độ xử lý của máy tính trong tương lai", "Khả năng thiếu minh bạch (‘hộp đen’)"], answer: 2 },
+	{ q: "Hầu hết các thành tựu hiện tại của AI nói chung (như ChatGPT, hệ thống nhận dạng...) đang thuộc phạm vi nào?", options: [ "Trí tuệ nhân tạo hẹp / Trí tuệ nhân tạo yếu", "Trí tuệ nhân tạo tổng quát / Trí tuệ nhân tạo mạnh", "Trí tuệ nhân tạo siêu việt", "Trí tuệ nhân tạo toàn năng"], answer: 0 },
+	{ q: "Thuật ngữ ‘hộp đen’ trong cảnh báo về AI phản ánh đặc điểm nào của các ứng dụng AI hiện nay?", options: [ "AI chỉ hoạt động được trong môi trường không có ánh sáng", "Phần lớn ứng dụng AI gây khó khăn cho việc hiểu các quyết định được đưa ra như thế nào, dẫn đến thiếu minh bạch", "Thiết bị phần cứng của AI bắt buộc phải đóng trong hộp màu đen", "Dữ liệu của AI không thể lưu trữ trên máy tính"], answer: 1 },
     ];
 
     let userAnswers = new Array(quizData.length).fill(null);
