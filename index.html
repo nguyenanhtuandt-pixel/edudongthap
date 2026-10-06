@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Chấm Thi Tin Học</title>
+    <title>Hệ Thống Chấm Thi Tin Học - Thầy Giáo 4.0</title>
     <style>
         /* Toàn bộ phần CSS giữ nguyên như cũ để làm đẹp giao diện */
         body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding: 20px; }
@@ -22,10 +22,10 @@
 <body>
 
 <div class="quiz-container">
-    <h2>ÔN TẬP BÀI 3 - Tin 11</h2>
+    <h2>KIỂM TRA TX2 - TIN 12</h2>
     <hr>
     <input type="text" id="hoTen" placeholder="Nhập Họ và Tên học sinh">
-    <input type="text" id="lop" placeholder="Nhập Lớp (Ví dụ: 10A1)">
+    <input type="text" id="lop" placeholder="Nhập Lớp (Ví dụ: 12A6)">
 
     <div id="quiz">
         </div>
@@ -37,16 +37,47 @@
 <script>
     // 1. DỮ LIỆU CÂU HỎI
     const quizData = [
-        { q: "Văn bản chương trình do người lập trình viết bằng ngôn ngữ lập trình bậc cao được gọi là gì?", options: [ "Mã máy (Machine code)", "Mã nguồn (Source code)", "Mã nhị phân (Binary code)", "Phần mềm thương mại (Commercial software)"], answer: 1 },
-	{ q: "Phần mềm thương mại thường được chuyển giao cho người sử dụng dưới dạng nào?", options: [ "Cung cấp cả mã nguồn và mã máy", "Chỉ cung cấp mã nguồn để người dùng chỉnh sửa", "Dạng mã máy (mã đóng) để bảo vệ bản quyền và chống sửa đổi", "Miễn phí hoàn toàn không điều kiện"], answer: 2 },
-       	{ q: "Khái niệm ‘Phần mềm tự do’ (Free software) được hiểu đúng nhất là:", options: [ "Phần mềm chỉ cho phép người dùng chạy thử 30 ngày", "Phần mềm không chỉ miễn phí mà còn cho phép người dùng tự do sử dụng, học tập, sửa đổi và phân phối lại mà không cần xin phép", "Phần mềm bắt buộc phải mua bản quyền hàng năm", "Phần mềm chỉ chạy trực tuyến trên nền web"], answer: 1 },
-	{ q: "Giấy phép công cộng phổ biến nhất được áp dụng rộng rãi cho các phần mềm nguồn mở hiện nay là:", options: [ "Microsoft EULA", "Adobe End User License", "GNU GPL (GNU General Public License)", "ISO 9001 License"], answer: 2 },
-	{ q: "Điều kiện BẮT BUỘC khi một người sửa đổi và phân phối lại một phần mềm nguồn mở được phát hành theo giấy phép GNU GPL là gì?", options: [ "Phải giữ kín mã nguồn phần phần mới sửa đổi", "Phải bán phần mềm với giá cao hơn phiên bản gốc", "Phải công khai mã nguồn của bản sửa đổi và tiếp tục áp dụng giấy phép GNU GPL cho bản đó", "Phải xóa tên tác giả ban đầu ra khỏi phần mềm"], answer: 2 },
-	{ q: "Phần mềm nào sau đây là ví dụ tiêu biểu về phần mềm đồ họa nguồn mở?", options: [ "Adobe Photoshop", "CorelDRAW", "GIMP", "MS Paint"], answer: 2 },
-	{ q: "Ưu điểm nổi bật nhất của phần mềm nguồn mở so với phần mềm thương mại là gì?", options: [ "Chi phí thấp, tính minh bạch cao (kiểm soát được mã nguồn) và không bị phụ thuộc vào một nhà cung cấp", "Luôn có tổng đài hỗ trợ kỹ thuật trực 24/7 từ nhà sản xuất", "Được thiết kế dành riêng (‘may-đo’) theo yêu cầu đặc thù của từng cá nhân", "Tất cả các tính năng nâng cao đều tự động cài đặt mà không cần kết nối mạng"], answer: 0 },
-       	{ q: "Nhược điểm chính của phần mềm thương mại dạng ‘đóng gói’ (như Microsoft Office, Photoshop) là gì?", options: [ "Không thể dùng được trên máy tính cá nhân", "Chi phí mua bản quyền thường đắt và người dùng dễ bị phụ thuộc vào nhà cung cấp", "Không có giao diện đồ họa cho người dùng", "Bắt buộc người dùng phải tự biên dịch mã nguồn trước khi dùng"], answer: 1 },
-	{ q: "Đặc điểm nào sau đây mô tả ĐÚNG nhất về ‘Phần mềm chạy trên Internet’ (Phần mềm trực tuyến)?", options: [ "Là phần mềm chỉ cài đặt được trên hệ điều hành Linux", "Là phần mềm cho phép người dùng sử dụng trực tiếp qua trình duyệt web mà không cần cài đặt vào máy", "Là phần mềm chỉ mở được khi máy tính bị mất kết nối mạng", "Là phần mềm bắt buộc phải cài đặt bằng tệp tin .exe"], answer: 1 },
-	{ q: "Ứng dụng nào dưới đây KHÔNG PHẢI là phần mềm chạy trên Internet?", options: [ "Google Docs", "Canva (bản web)", "Google Sheets", "Phần mềm soạn thảo văn bản Microsoft Word 2003 (chạy offline trên máy tính)"], answer: 3 },
+        { q: "Theo định nghĩa chính xác về mặt công nghệ, Internet là gì?", options: [ "Là mạng xã hội kết nối mọi người trên toàn cầu.", "Là các trang web và ứng dụng chat trực tuyến.", "Mạng thông tin toàn cầu hoạt động theo giao thức TCP/IP.", "Hệ thống mạng máy tính nội bộ của các cơ quan."], answer: 2 },
+	{ q: "Địa chỉ email có dạng chung như thế nào?", options: [ "tên tài khoản@tên miền của máy chủ thư điện tử", "tên miền máy chủ@tên tài khoản", "tên người dùng.máy chủ mail", "tên tài khoản#tên miền"], answer: 0 },
+	{ q: "Phần mềm gửi/nhận thư điện tử sẽ làm gì với toàn bộ dữ liệu (nội dung thư, địa chỉ gửi/nhận, tệp đính kèm)?", options: [ "Xóa bỏ phần tệp đính kèm", "Đóng gói toàn bộ dữ liệu theo định dạng đã định", "Gửi trực tiếp không cần qua máy chủ", "Chỉ chuyển tiếp địa chỉ người nhận"], answer: 1 },
+	{ q: "Nếu máy chủ thư điện tử nhận thư nhưng không tìm thấy người nhận đúng như địa chỉ, nó sẽ xử lý thế nào?", options: [ "Tự động xóa thư vĩnh viễn", "Lưu giữ thư trong 30 ngày rồi xóa", "Tạo một thư báo lỗi chuyển ngược lại người gửi", "Chuyển ngẫu nhiên cho một người dùng khác"], answer: 2 },
+	{ q: "Tập hợp các quy định cách thức giao tiếp giữa các đối tượng tham gia truyền nhận dữ liệu qua mạng gọi là gì?", options: [ "Mạng máy tính", "Giao thức mạng (network protocol)", "Phần mềm ứng dụng", "Hệ điều hành mạng"], answer: 1 },
+	{ q: "Tên gọi khác của giao thức mạng là gì?", options: [ "Giao thức truyền thông", "Giao thức địa chỉ", "Giao thức định tuyến", "Giao thức kết nối"], answer: 1 },
+	{ q: "Giao thức nào liên quan trực tiếp đến việc gửi thư điện tử?", options: [ "POP3", "IMAP", "SMTP", "HTTP"], answer: 2 },
+ 	{ q: "Các giao thức nào sau đây quy định về cách thức người nhận lấy thư điện tử?", options: [ "SMTP và TCP", "POP3 và IMAP", "IP và Ethernet", "DNS và HTTP"], answer: 1 },
+	{ q: "Giao thức Ethernet quy định việc truyền tin trong loại mạng nào?", options: [ "Mạng diện rộng (WAN)", "Mạng toàn cầu (Internet)", "Mạng cục bộ (LAN)", "Mạng đô thị (MAN)"], answer: 2 },
+ 	{ q: "Trong giao thức Ethernet, mỗi thiết bị tham gia mạng đều có một địa chỉ bằng số đi theo phần cứng gọi là gì?", options: [ "Địa chỉ IP", "Địa chỉ MAC", "Địa chỉ URL", "Địa chỉ cổng"], answer: 1 },
+ 	{ q: "Trong mạng cục bộ (Ethernet), việc truyền dữ liệu căn cứ vào loại địa chỉ nào?", options: [ "Địa chỉ IP", "Địa chỉ email", "Địa chỉ MAC", "Tên miền"], answer: 2 },
+	{ q: "Trong Ethernet, máy nhận dùng thành phần nào để phát hiện lỗi truyền dữ liệu?", options: [ "Mã kiểm tra kèm theo dữ liệu", "Địa chỉ IP", "Tên miền DNS", "Cổng ứng dụng"], answer: 0 },
+	{ q: "Vì sao trong giao thức Ethernet người ta không truyền một lượng tin dài không giới hạn giữa hai máy tính?", options: [ "Vì làm tăng tốc độ truyền dữ liệu quá mức", "Vì có thể làm quá tải máy nhận và cản trở các cuộc truyền khác", "Vì phần cứng máy tính không cho phép", "Vì dữ liệu sẽ bị xóa tự động"], answer: 1 },
+	{ q: "Việc truyền dữ liệu trong Ethernet được thực hiện dưới dạng nào?", options: [ "Từng ký tự riêng lẻ", "Toàn bộ tệp tin một lần", "Từng gói dữ liệu có độ dài xác định", "Luồng tín hiệu liên tục không ngắt quãng"], answer: 2 },
+	{ q: "Các quy định của giao thức mạng liên quan đến những yếu tố nào của dữ liệu?", options: [ "Chỉ liên quan đến tốc độ đường truyền", "Định dạng, ý nghĩa và cách xử lý dữ liệu", "Giá thành thiết bị và chi phí dịch vụ", "Tên người sở hữu thiết bị"], answer: 1 },
+	{ q: "Hai giao thức quan trọng nhất của mạng Internet là gì?", options: [ "HTTP và DNS", "SMTP và POP3", "IP và TCP", "Ethernet và MAC"], answer: 2 },
+	{ q: "Hai nội dung chính của giao thức IP là gì?", options: [ "Đóng gói thư và phát hiện lỗi", "Đánh địa chỉ và định tuyến", "Mã hóa trang web và gán cổng ứng dụng", "Cắt gói tin và rắp ráp dữ liệu"], answer: 1 },
+	{ q: "Hiện nay có hai loại địa chỉ IP nào?", options: [ "IPv1 và IPv2", "IPv3 và IPv4", "IPv4 và IPv6", "IPv6 và IPv8"], answer: 2 },
+	{ q: "Mỗi địa chỉ IPv4 có độ dài là bao nhiêu byte?", options: [ "2 byte", "4 byte", "6 byte", "8 byte"], answer: 1 },
+	{ q: "Địa chỉ IP thường được viết theo kiểu ‘dot decimal’, tức là các giá trị byte được viết trong hệ nào và phân tách bằng dấu gì?", options: [ "Hệ nhị phân, phân tách bằng dấu phẩy", "Hệ thập phân, phân tách bằng dấu chấm", "Hệ thập lục phân, phân tách bằng dấu hai chấm", "Hệ thập phân, phân tách bằng dấu gạch ngang"], answer: 1 },
+ 	{ q: "Địa chỉ MAC có độ dài bao nhiêu byte?", options: [ "4 byte", "6 byte", "8 byte", "16 byte"], answer: 1 },
+	{ q: "Điểm khác biệt cơ bản giữa địa chỉ MAC và địa chỉ IP là gì?", options: [ "MAC thay đổi được, IP gắn cố định vào phần cứng", "MAC là 4 byte, IP là 6 byte", "MAC gán liền với phần cứng không thay đổi, IP được gán cho thiết bị và có thể thay đổi", "MAC dùng trên Internet, IP dùng trong mạng LAN"], answer: 2 },
+	{ q: "Khi chuyển dữ liệu giữa hai máy tính trong cùng một mạng cục bộ (LAN), máy tính chỉ cần loại địa chỉ nào?", options: [ "Địa chỉ IP", "Địa chỉ MAC", "Tên miền", "Địa chỉ email"], answer: 1 },
+	{ q: "Khi dữ liệu được gửi từ mạng LAN này sang mạng LAN khác, thiết bị mạng nào đóng vai trò hướng dẫn dữ liệu ‘tìm đường’?", options: [ "Switch", "Modem", "Router", "Hub"], answer: 2 },
+	{ q: "Cách thức chọn cổng thích hợp để gửi gói dữ liệu tới đích của Router được gọi là gì?", options: [ "Định tuyến (chọn đường)", "Đóng gói dữ liệu", "Kiểm soát lỗi truyền", "Phân giải tên miền"], answer: 0 },
+	{ q: "Trong phương pháp định tuyến tĩnh, nếu địa chỉ đến không có trong bảng hướng dẫn thì gói dữ liệu sẽ được xử lý như thế nào?", options: [ "Bị Router hủy bỏ ngay lập tức", "Được gửi theo cổng mặc định", "Trả lại ngay cho máy gửi", "Gửi đến tất cả các cổng của Router"], answer: 1 },
+	{ q: "Phương pháp định tuyến nào cho phép thay đổi cổng gửi đi tùy thuộc vào điều kiện cụ thể (như tuyến đường bị quá tải)?", options: [ "Định tuyến tĩnh", "Định tuyến cố định", "Định tuyến động", "Định tuyến thủ công"], answer: 2 },
+	{ q: "Tên viết tắt của giao thức liên mạng (Internet Protocol) là gì?", options: [ "TCP", "IP", "MAC", "HTTP"], answer: 1 },
+	{ q: "Tên tiếng Anh viết tắt của giao thức kiểm soát việc truyền dữ liệu là gì?", options: [ "IP (Internet Protocol)", "TCP (Transmission Control Protocol)", "UDP (User Datagram Protocol)", "HTTP (Hypertext Transmission Protocol)"], answer: 1 },
+	{ q: "Nhược điểm của giao thức IP khi truyền dữ liệu là gì?", options: [ "Không thể truyền dữ liệu giữa các mạng khác nhau", "Chỉ đảm bảo chuyển từ mạng này đến mạng kia, không đảm bảo đến đúng ứng dụng cụ thể trên máy", "Không hỗ trợ địa chỉ nhị phân", "Bắt buộc phải có dây cáp tín hiệu nối trực tiếp"], answer: 1 },
+ 	{ q: "Để đảm bảo các gói dữ liệu gửi đi không bị lẫn giữa các ứng dụng trên cùng một máy, TCP cấp cho mỗi ứng dụng một chỉ số gọi là gì?", options: [ "Địa chỉ IP", "Cổng ứng dụng", "Địa chỉ MAC", "Mã kiểm tra"], answer: 1 },
+	{ q: "Tại nơi gửi, giao thức TCP làm nhiệm vụ gì đối với dữ liệu?", options: [ "Nối các dữ liệu nhỏ thành một tệp lớn", "Cắt dữ liệu ra thành nhiều gói có độ dài xác định", "Mã hóa dữ liệu thành hình ảnh", "Chuyển dữ liệu trực tiếp lên vệ tinh"], answer: 1 },
+	{ q: "Tại sao gói dữ liệu TCP gửi sau lại có thể đến nơi nhận trước?", options: [ "Do các gói dữ liệu được gán cổng ứng dụng khác nhau", "Do các gói dữ liệu có thể lưu ở các router với thời gian khác nhau và đi theo đường khác nhau", "Do giao thức IP cố tình đảo ngược thứ tự gói tin", "Do máy nhận sắp xếp sai"], answer: 1 },
+	{ q: "Để nơi nhận có thể ráp lại đúng thứ tự các gói dữ liệu ban đầu, TCP thực hiện công việc gì?", options: [ "Đánh số theo thứ tự cho các gói dữ liệu theo từng ứng dụng", "Kiểm tra địa chỉ MAC của nơi nhận", "Gửi lại tất cả các gói tin từ đầu", "Yêu cầu Router tự động sắp xếp"], answer: 0 },
+	{ q: "Việc tách dữ liệu thành nhiều gói trong giao thức mạng mang lại lợi ích gì lớn cho đường truyền vật lý?", options: [ "Giúp tăng độ dài cho mỗi cuộc gọi điện thoại", "Cho phép nhiều cuộc truyền khác nhau thực hiện xen kẽ, tận dụng đường truyền", "Loại bỏ hoàn toàn sự cố thất lạc gói tin", "Giúp máy tính không cần sử dụng địa chỉ IP"], answer: 1 },
+	{ q: "Giao thức HTTP (Hypertext Transmission Protocol) có chức năng gì?", options: [ "Quy định cách truyền thư điện tử", "Quy định cách biểu diễn (mã hoá) các trang web", "Thay thế địa chỉ IP bằng chữ", "Kiểm tra lỗi phần cứng mạng"], answer: 1 },
+	{ q: "Giao thức DNS (Domain Name System) có vai trò gì trên mạng Internet?", options: [ "Cho phép dùng hệ thống tên bằng chữ thay thế cho địa chỉ IP khó nhớ", "Chia dữ liệu thành các gói tin nhỏ", "Gán địa chỉ MAC cho card mạng", "Định tuyến đường đi ngắn nhất cho dữ liệu"], answer: 0 },
+	{ q: "Tên miền moet.edu.vn được dùng để thay thế cho thông tin nào?", options: [ "Địa chỉ MAC của máy tính cá nhân", "Địa chỉ IP của máy chủ Bộ Giáo dục và Đào tạo", "Cổng ứng dụng của dịch vụ gửi thư", "Mã kiểm tra lỗi của trang web"], answer: 1 },
+	{ q: "Chuỗi nhị phân 11000000 10101000 00000001 00000011 biểu diễn địa chỉ IPv4 nào ở dạng thập phân?", options: [ "10.25.0.255", "192.168.1.3", "131.214.23.16", "172.18.0.1"], answer: 1 },
+	{ q: "Tóm lại, vai trò chính của giao thức TCP trong mô hình TCP/IP là gì?", options: [ "Thiết lập địa chỉ và dẫn đường cho gói tin", "Đảm bảo việc truyền dữ liệu theo từng ứng dụng một cách chính xác, tin cậy và hiệu quả", "Chuyển đổi tên miền thành địa chỉ IP", "Mã hóa giao diện các trang web hiển thị trên trình duyệt"], answer: 1 },
+ 	
     ];
 
     let userAnswers = new Array(quizData.length).fill(null);
