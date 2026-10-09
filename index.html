@@ -22,10 +22,10 @@
 <body>
 
 <div class="quiz-container">
-    <h2>KIỂM TRA TX2 - TIN 11</h2>
+    <h2>KIỂM TRA TX2 - TIN 12</h2>
     <hr>
     <input type="text" id="hoTen" placeholder="Nhập Họ và Tên học sinh">
-    <input type="text" id="lop" placeholder="Nhập Lớp (Ví dụ: 11A3)">
+    <input type="text" id="lop" placeholder="Nhập Lớp (Ví dụ: 12A6)">
 
     <div id="quiz">
         </div>
@@ -37,46 +37,47 @@
 <script>
     // 1. DỮ LIỆU CÂU HỎI
     const quizData = [
-        { q: "Tất cả các thiết bị bên trong thân máy tính đều được gắn với một bảng mạch gọi là gì?", options: [ "Bảng mạch chính (Mainboard)", "Bảng mạch mở rộng", "Bảng mạch ngoại vi", "Bộ xử lý trung tâm"], answer: 0 },
-	{ q: "Bộ phận nào được coi là thành phần quan trọng nhất của máy tính, đảm nhận việc thực hiện các chương trình?", options: [ "Bộ nhớ ngoài", "Bộ xử lý trung tâm (CPU)", "Bộ nhớ RAM", "Cổng kết nối"], answer: 1 },
-	{ q: "CPU được cấu tạo từ hai bộ phận chính nào?", options: [ "RAM và ROM", "ALU và Thanh ghi", "ALU và CU", "CU và Bộ nhớ đệm (Cache)"], answer: 2 },
-	{ q: "Bộ phận ALU (Arithmetic & Logic Unit) trong CPU có chức năng gì?", options: [ "Phối hợp đồng bộ các thiết bị của máy tính", "Lưu trữ dữ liệu lâu dài", "Thực hiện tất cả các phép tính số học và lôgic", "Kiểm tra và khởi động máy tính"], answer: 2 },
-	{ q: "Bộ phận CU (Control Unit) trong CPU có chức năng gì?", options: [ "Thực hiện các phép tính số học", "Phối hợp đồng bộ các thiết bị của máy tính, đảm bảo máy tính thực hiện đúng chương trình", "Lưu trữ các lệnh và dữ liệu đang được xử lý", "Lưu trữ dữ liệu hệ thống cố định"], answer: 1 },
-	{ q: "Đơn vị nào thường được dùng để đánh giá tốc độ của CPU?", options: [ "MB (Megabyte)", "GB (Gigabyte)", "GHz (Gigahertz)", "FLOPS"], answer: 2 },
-	{ q: "1 GHz tương ứng với bao nhiêu xung một giây?", options: [ "1 triệu xung", "10 triệu xung", "100 triệu xung", "1 tỉ xung"], answer: 3 },
-	{ q: "Vùng nhớ đặc biệt trong CPU dùng để lưu trữ tạm thời các lệnh và dữ liệu đang được xử lý với tốc độ rất nhanh là gì?", options: [ "Bộ nhớ đệm (Cache)", "Thanh ghi (Register)", "ROM", "SSD"], answer: 1 },
- 	{ q: "Bộ nhớ đệm (Cache) có vai trò gì trong CPU?", options: [ "Phối hợp các thiết bị ngoại vi", "Chứa dữ liệu được nạp trước từ bộ nhớ trong nhằm giảm thời gian đọc dữ liệu", "Thực hiện các phép tính lôgic XOR", "Lưu trữ chương trình kiểm tra máy tính lâu dài"], answer: 1 },
-	{ q: "Mỗi đơn vị xử lý trong một chip CPU đa lõi được gọi là gì?", options: [ "Thanh ghi", "Xung đồng hồ", "Lõi hoặc nhân (Core)", "Mạch lôgic"], answer: 2 },
-	{ q: "Bộ nhớ trong của máy tính được chia thành hai loại chính là gì?", options: [ "Đĩa cứng và Đĩa mềm", "RAM và ROM", "Cache và Thanh ghi", "Thẻ nhớ và Đĩa quang"], answer: 1 },
-	{ q: "Đặc điểm nào sau đây là của bộ nhớ RAM?", options: [ "Chỉ có thể đọc mà không thể ghi hay xoá", "Dùng để lưu trữ dữ liệu lâu dài không cần nguồn nuôi", "Là bộ nhớ có thể ghi được, dùng để ghi dữ liệu tạm thời khi chạy chương trình (tắt máy dữ liệu bị xoá)", "Chứa các chương trình kiểm tra hay khởi động máy tính"], answer: 2 },
-	{ q: "Đặc điểm nào sau đây là của bộ nhớ ROM?", options: [ "Dữ liệu bị xoá khi tắt máy", "Dùng để lưu trữ tạm thời các lệnh đang xử lý", "Không cần nguồn nuôi, lưu trữ dữ liệu/chương trình lâu dài (như chương trình khởi động)", "Có dung lượng lớn hơn RAM và thời gian truy cập nhanh hơn"], answer: 2 },
-	{ q: "So với RAM, bộ nhớ ROM thường có đặc điểm nào sau đây?", options: [ "Dung lượng lớn hơn, thời gian truy cập nhỏ hơn", "Dung lượng nhỏ hơn, thời gian truy cập trung bình lớn hơn", "Dung lượng lớn hơn, thời gian truy cập lớn hơn", "Dung lượng và thời gian truy cập tương đương nhau"], answer: 1 },
-	{ q: "Các tham số đo hiệu năng của bộ nhớ trong gồm có:", options: [ "Tần số xung clock và số lõi", "Dung lượng bộ nhớ và thời gian truy cập trung bình", "Kích thước vật lý và số cổng kết nối", "Số lượng bóng bán dẫn và điện áp"], answer: 1 },
-	{ q: "Đơn vị tính dung lượng bộ nhớ trong thường gặp là:", options: [ "GHz hoặc MHz", "MB, GB (ví dụ 8 GB, 16 GB, 32 GB)", "Khóa K1, K2", "Bit/giây"], answer: 1 },
-	{ q: "Ý nghĩa của việc giảm thời gian truy cập bộ nhớ trong là gì?", options: [ "Giúp giảm dung lượng lưu trữ của máy tính", "Tăng dung lượng bộ nhớ ngoài", "Nâng cao hiệu suất tổng thể của máy tính", "Giảm số lượng lõi trong CPU"], answer: 2 },
-	{ q: "Thiết bị nào sau đây KHÔNG thuộc loại bộ nhớ ngoài?", options: [ "Đĩa từ (đĩa cứng)", "Đĩa thể rắn (SSD)", "Bộ nhớ RAM", "Đĩa quang / Thẻ nhớ USB"], answer: 2 },
- 	{ q: "Ưu điểm của bộ nhớ ngoài so với RAM là gì?", options: [ "Tốc độ truy cập nhanh hơn rất nhiều", "Giá thành rẻ hơn RAM và có dung lượng lớn", "Luôn được gắn cố định bên trong CPU", "Không bị ảnh hưởng bởi từ trường"], answer: 1 },
-	{ q: "So sánh tốc độ truy cập giữa các loại đĩa thuộc bộ nhớ ngoài:", options: [ "Đĩa quang nhanh hơn đĩa cứng và đĩa SSD", "Đĩa cứng (điện cơ) có tốc độ truy cập chậm hơn đĩa SSD nhưng nhanh hơn đĩa quang", "Đĩa SSD chậm hơn đĩa cứng", "Tất cả các loại đĩa đều có tốc độ như nhau"], answer: 1 },
-	{ q: "Dung lượng của các bộ nhớ ngoài phổ biến hiện nay thường được tính bằng đơn vị nào?", options: [ "KB hoặc MB", "GB hoặc TB", "Hz hoặc GHz", "Byte hoặc Bit"], answer: 1 },
-	{ q: "Về bản chất, CPU là một mạch điện tử dùng để biến đổi (xử lý) loại dữ liệu nào?", options: [ "Dữ liệu văn bản thô", "Dữ liệu nhị phân (các bit 0 và 1)", "Dữ liệu hình ảnh màu", "Dữ liệu âm thanh tương tự (Analog)"], answer: 1 },
-	{ q: "Các đại lượng lôgic chỉ nhận một trong hai giá trị nào?", options: [ "Đúng (1) và Sai (0)", "Dương (+) và Âm (-)", "Mở và Tắt", "Cao và Thấp"], answer: 0 },
-	{ q: "Phép nhân lôgic còn có tên gọi khác và kí hiệu là gì?", options: [ "Phép cộng lôgic (OR)", "Phép nhân lôgic (AND, kí hiệu ∧)", "Phép phủ định (NOT)", "Phép loại trừ (XOR)"], answer: 1 },
-	{ q: "Phép nhân lôgic x AND y (x ∧ y) cho kết quả bằng 1 khi nào?", options: [ "Khi x = 1 hoặc y = 1", "Khi cả hai đại lượng x và y đều bằng 1", "Khi x và y khác giá trị nhau", "Khi cả hai đại lượng x và y đều bằng 0"], answer: 1 },
-	{ q: "Phép cộng lôgic x OR y (x ∨ y) cho kết quả bằng 1 khi nào?", options: [ "Khi ít nhất một trong hai đại lượng x HOẶC y bằng 1", "Chỉ khi cả x và y đều bằng 1", "Khi x và y có giá trị bằng nhau", "Chỉ khi cả x và y đều bằng 0"], answer: 0 },
-	{ q: "Phép phủ định lôgic NOT x (kí hiệu x̄) cho kết quả như thế nào?", options: [ "Phủ định của 0 là 0", "Phủ định của 1 là 1", "Phủ định của 0 là 1 và phủ định của 1 là 0", "Luôn cho kết quả là 1"], answer: 2 },
-	{ q: "Phép hoặc loại trừ x XOR y (x ⊕ y) cho kết quả bằng 1 khi nào?", options: [ "Khi x và y cùng bằng 1", "Khi x và y cùng bằng 0", "Khi hai đại lượng x và y có giá trị khác nhau", "Khi hai đại lượng x và y có giá trị giống nhau"], answer: 2 },
- 	{ q: "Trong mạch điện minh hoạ phép toán lôgic, rơ le điện tử thường đóng sẽ ngắt mạch điện khi nào?", options: [ "Khi không được cấp điện", "Khi được cấp điện", "Khi bóng đèn bị hỏng", "Khi dòng điện bằng 0"], answer: 1 },
-	{ q: "Sơ đồ mạch điện thực hiện phép nhân lôgic (AND) sử dụng hai rơ le K1 và K2 mắc với nhau như thế nào?", options: [ "Mắc song song", "Mắc nối tiếp", "Mắc hỗn hợp", "Không cần mắc nối với nhau"], answer: 1 },
-	{ q: "Sơ đồ mạch điện thực hiện phép cộng lôgic (OR) sử dụng hai rơ le K1 và K2 mắc với nhau như thế nào?", options: [ "Mắc nối tiếp", "Mắc song song", "Mắc nối tiếp với bóng đèn phủ định", "Mắc cầu"], answer: 1 },
-	{ q: "Các mạch điện thực hiện các phép toán lôgic cơ bản (AND, OR, NOT, XOR,...) được gọi là gì?", options: [ "Cổng lôgic (Lôgic gate)", "Cổng kết nối ngoại vi", "Thanh ghi", "Đơn vị xử lý ALU"], answer: 0 },
-	{ q: "Mạch lôgic (hay mạch số) được định nghĩa là gì?", options: [ "Mạch điện chứa bộ nhớ RAM và ROM", "Mạch điện hay điện tử có đầu vào và đầu ra thể hiện các giá trị lôgic", "Mạch kết nối đĩa cứng với mainboard", "Mắc điều khiển tốc độ quạt tản nhiệt"], answer: 1 },
-	{ q: "Bất cứ mạch lôgic nào cũng có thể được xây dựng từ các cổng lôgic cơ bản nào?", options: [ "Chỉ từ cổng XOR", "Chỉ từ cổng NAND và NOR", "Các cổng AND, OR, NOT", "Các thanh ghi và bộ nhớ Cache"], answer: 2 },
-	{ q: "Hệ nhị phân là hệ đếm chỉ sử dụng hai chữ số nào?", options: [ "1 và 2", "0 và 1", "0 và 2", "1 và 10"], answer: 1 },
-	{ q: "Trong hệ nhị phân, giá trị của chữ số 1 ở hàng thứ k tính từ phải sang trái có giá trị bằng bao nhiêu?", options: [ "10^(k-1)", "2^(k-1)", "2^k", "k^2"], answer: 1 },
-	{ q: "Số nhị phân 10011₂ có giá trị trong hệ thập phân là bao nhiêu?", options: [ "17", "18", "19", "21"], answer: 2 },
-	{ q: "Khi thực hiện phép cộng hai số nhị phân 1 bit (x + y), trường hợp nào dưới đây phát sinh số nhớ bằng 1?", options: [ "x = 0, y = 0", "x = 0, y = 1", "x = 1, y = 0", "x = 1, y = 1"], answer: 3 },
- 	{ q: "Khi cộng hai số 1 bit (x và y), kết quả thu được gồm số nhớ z và kết quả t. Công thức lôgic tương ứng của z và t là gì?", options: [ "z = x ∨ y và t = x ∧ y", "z = x ∧ y và t = x ⊕ y", "z = x ⊕ y và t = x ∧ y", "z = x̄ và t = ȳ"], answer: 1 },
-	{ q: "Kết quả của phép cộng nhị phân 110₂ + 111₂ trong hệ nhị phân và hệ thập phân lần lượt là:", options: [ "1101₂ (bằng 13 trong hệ thập phân)", "1011₂ (bằng 11 trong hệ thập phân)", "1100₂ (bằng 12 trong hệ thập phân)", "1111₂ (bằng 15 trong hệ thập phân)"], answer: 0 },
+        { q: "Theo định nghĩa chính xác về mặt công nghệ, Internet là gì?", options: [ "Là mạng xã hội kết nối mọi người trên toàn cầu.", "Là các trang web và ứng dụng chat trực tuyến.", "Mạng thông tin toàn cầu hoạt động theo giao thức TCP/IP.", "Hệ thống mạng máy tính nội bộ của các cơ quan."], answer: 2 },
+	{ q: "Địa chỉ email có dạng chung như thế nào?", options: [ "tên tài khoản@tên miền của máy chủ thư điện tử", "tên miền máy chủ@tên tài khoản", "tên người dùng.máy chủ mail", "tên tài khoản#tên miền"], answer: 0 },
+	{ q: "Phần mềm gửi/nhận thư điện tử sẽ làm gì với toàn bộ dữ liệu (nội dung thư, địa chỉ gửi/nhận, tệp đính kèm)?", options: [ "Xóa bỏ phần tệp đính kèm", "Đóng gói toàn bộ dữ liệu theo định dạng đã định", "Gửi trực tiếp không cần qua máy chủ", "Chỉ chuyển tiếp địa chỉ người nhận"], answer: 1 },
+	{ q: "Nếu máy chủ thư điện tử nhận thư nhưng không tìm thấy người nhận đúng như địa chỉ, nó sẽ xử lý thế nào?", options: [ "Tự động xóa thư vĩnh viễn", "Lưu giữ thư trong 30 ngày rồi xóa", "Tạo một thư báo lỗi chuyển ngược lại người gửi", "Chuyển ngẫu nhiên cho một người dùng khác"], answer: 2 },
+	{ q: "Tập hợp các quy định cách thức giao tiếp giữa các đối tượng tham gia truyền nhận dữ liệu qua mạng gọi là gì?", options: [ "Mạng máy tính", "Giao thức mạng (network protocol)", "Phần mềm ứng dụng", "Hệ điều hành mạng"], answer: 1 },
+	{ q: "Tên gọi khác của giao thức mạng là gì?", options: [ "Giao thức truyền thông", "Giao thức địa chỉ", "Giao thức định tuyến", "Giao thức kết nối"], answer: 1 },
+	{ q: "Giao thức nào liên quan trực tiếp đến việc gửi thư điện tử?", options: [ "POP3", "IMAP", "SMTP", "HTTP"], answer: 2 },
+ 	{ q: "Các giao thức nào sau đây quy định về cách thức người nhận lấy thư điện tử?", options: [ "SMTP và TCP", "POP3 và IMAP", "IP và Ethernet", "DNS và HTTP"], answer: 1 },
+	{ q: "Giao thức Ethernet quy định việc truyền tin trong loại mạng nào?", options: [ "Mạng diện rộng (WAN)", "Mạng toàn cầu (Internet)", "Mạng cục bộ (LAN)", "Mạng đô thị (MAN)"], answer: 2 },
+ 	{ q: "Trong giao thức Ethernet, mỗi thiết bị tham gia mạng đều có một địa chỉ bằng số đi theo phần cứng gọi là gì?", options: [ "Địa chỉ IP", "Địa chỉ MAC", "Địa chỉ URL", "Địa chỉ cổng"], answer: 1 },
+ 	{ q: "Trong mạng cục bộ (Ethernet), việc truyền dữ liệu căn cứ vào loại địa chỉ nào?", options: [ "Địa chỉ IP", "Địa chỉ email", "Địa chỉ MAC", "Tên miền"], answer: 2 },
+	{ q: "Trong Ethernet, máy nhận dùng thành phần nào để phát hiện lỗi truyền dữ liệu?", options: [ "Mã kiểm tra kèm theo dữ liệu", "Địa chỉ IP", "Tên miền DNS", "Cổng ứng dụng"], answer: 0 },
+	{ q: "Vì sao trong giao thức Ethernet người ta không truyền một lượng tin dài không giới hạn giữa hai máy tính?", options: [ "Vì làm tăng tốc độ truyền dữ liệu quá mức", "Vì có thể làm quá tải máy nhận và cản trở các cuộc truyền khác", "Vì phần cứng máy tính không cho phép", "Vì dữ liệu sẽ bị xóa tự động"], answer: 1 },
+	{ q: "Việc truyền dữ liệu trong Ethernet được thực hiện dưới dạng nào?", options: [ "Từng ký tự riêng lẻ", "Toàn bộ tệp tin một lần", "Từng gói dữ liệu có độ dài xác định", "Luồng tín hiệu liên tục không ngắt quãng"], answer: 2 },
+	{ q: "Các quy định của giao thức mạng liên quan đến những yếu tố nào của dữ liệu?", options: [ "Chỉ liên quan đến tốc độ đường truyền", "Định dạng, ý nghĩa và cách xử lý dữ liệu", "Giá thành thiết bị và chi phí dịch vụ", "Tên người sở hữu thiết bị"], answer: 1 },
+	{ q: "Hai giao thức quan trọng nhất của mạng Internet là gì?", options: [ "HTTP và DNS", "SMTP và POP3", "IP và TCP", "Ethernet và MAC"], answer: 2 },
+	{ q: "Hai nội dung chính của giao thức IP là gì?", options: [ "Đóng gói thư và phát hiện lỗi", "Đánh địa chỉ và định tuyến", "Mã hóa trang web và gán cổng ứng dụng", "Cắt gói tin và rắp ráp dữ liệu"], answer: 1 },
+	{ q: "Hiện nay có hai loại địa chỉ IP nào?", options: [ "IPv1 và IPv2", "IPv3 và IPv4", "IPv4 và IPv6", "IPv6 và IPv8"], answer: 2 },
+	{ q: "Mỗi địa chỉ IPv4 có độ dài là bao nhiêu byte?", options: [ "2 byte", "4 byte", "6 byte", "8 byte"], answer: 1 },
+	{ q: "Địa chỉ IP thường được viết theo kiểu ‘dot decimal’, tức là các giá trị byte được viết trong hệ nào và phân tách bằng dấu gì?", options: [ "Hệ nhị phân, phân tách bằng dấu phẩy", "Hệ thập phân, phân tách bằng dấu chấm", "Hệ thập lục phân, phân tách bằng dấu hai chấm", "Hệ thập phân, phân tách bằng dấu gạch ngang"], answer: 1 },
+ 	{ q: "Địa chỉ MAC có độ dài bao nhiêu byte?", options: [ "4 byte", "6 byte", "8 byte", "16 byte"], answer: 1 },
+	{ q: "Điểm khác biệt cơ bản giữa địa chỉ MAC và địa chỉ IP là gì?", options: [ "MAC thay đổi được, IP gắn cố định vào phần cứng", "MAC là 4 byte, IP là 6 byte", "MAC gán liền với phần cứng không thay đổi, IP được gán cho thiết bị và có thể thay đổi", "MAC dùng trên Internet, IP dùng trong mạng LAN"], answer: 2 },
+	{ q: "Khi chuyển dữ liệu giữa hai máy tính trong cùng một mạng cục bộ (LAN), máy tính chỉ cần loại địa chỉ nào?", options: [ "Địa chỉ IP", "Địa chỉ MAC", "Tên miền", "Địa chỉ email"], answer: 1 },
+	{ q: "Khi dữ liệu được gửi từ mạng LAN này sang mạng LAN khác, thiết bị mạng nào đóng vai trò hướng dẫn dữ liệu ‘tìm đường’?", options: [ "Switch", "Modem", "Router", "Hub"], answer: 2 },
+	{ q: "Cách thức chọn cổng thích hợp để gửi gói dữ liệu tới đích của Router được gọi là gì?", options: [ "Định tuyến (chọn đường)", "Đóng gói dữ liệu", "Kiểm soát lỗi truyền", "Phân giải tên miền"], answer: 0 },
+	{ q: "Trong phương pháp định tuyến tĩnh, nếu địa chỉ đến không có trong bảng hướng dẫn thì gói dữ liệu sẽ được xử lý như thế nào?", options: [ "Bị Router hủy bỏ ngay lập tức", "Được gửi theo cổng mặc định", "Trả lại ngay cho máy gửi", "Gửi đến tất cả các cổng của Router"], answer: 1 },
+	{ q: "Phương pháp định tuyến nào cho phép thay đổi cổng gửi đi tùy thuộc vào điều kiện cụ thể (như tuyến đường bị quá tải)?", options: [ "Định tuyến tĩnh", "Định tuyến cố định", "Định tuyến động", "Định tuyến thủ công"], answer: 2 },
+	{ q: "Tên viết tắt của giao thức liên mạng (Internet Protocol) là gì?", options: [ "TCP", "IP", "MAC", "HTTP"], answer: 1 },
+	{ q: "Tên tiếng Anh viết tắt của giao thức kiểm soát việc truyền dữ liệu là gì?", options: [ "IP (Internet Protocol)", "TCP (Transmission Control Protocol)", "UDP (User Datagram Protocol)", "HTTP (Hypertext Transmission Protocol)"], answer: 1 },
+	{ q: "Nhược điểm của giao thức IP khi truyền dữ liệu là gì?", options: [ "Không thể truyền dữ liệu giữa các mạng khác nhau", "Chỉ đảm bảo chuyển từ mạng này đến mạng kia, không đảm bảo đến đúng ứng dụng cụ thể trên máy", "Không hỗ trợ địa chỉ nhị phân", "Bắt buộc phải có dây cáp tín hiệu nối trực tiếp"], answer: 1 },
+ 	{ q: "Để đảm bảo các gói dữ liệu gửi đi không bị lẫn giữa các ứng dụng trên cùng một máy, TCP cấp cho mỗi ứng dụng một chỉ số gọi là gì?", options: [ "Địa chỉ IP", "Cổng ứng dụng", "Địa chỉ MAC", "Mã kiểm tra"], answer: 1 },
+	{ q: "Tại nơi gửi, giao thức TCP làm nhiệm vụ gì đối với dữ liệu?", options: [ "Nối các dữ liệu nhỏ thành một tệp lớn", "Cắt dữ liệu ra thành nhiều gói có độ dài xác định", "Mã hóa dữ liệu thành hình ảnh", "Chuyển dữ liệu trực tiếp lên vệ tinh"], answer: 1 },
+	{ q: "Tại sao gói dữ liệu TCP gửi sau lại có thể đến nơi nhận trước?", options: [ "Do các gói dữ liệu được gán cổng ứng dụng khác nhau", "Do các gói dữ liệu có thể lưu ở các router với thời gian khác nhau và đi theo đường khác nhau", "Do giao thức IP cố tình đảo ngược thứ tự gói tin", "Do máy nhận sắp xếp sai"], answer: 1 },
+	{ q: "Để nơi nhận có thể ráp lại đúng thứ tự các gói dữ liệu ban đầu, TCP thực hiện công việc gì?", options: [ "Đánh số theo thứ tự cho các gói dữ liệu theo từng ứng dụng", "Kiểm tra địa chỉ MAC của nơi nhận", "Gửi lại tất cả các gói tin từ đầu", "Yêu cầu Router tự động sắp xếp"], answer: 0 },
+	{ q: "Việc tách dữ liệu thành nhiều gói trong giao thức mạng mang lại lợi ích gì lớn cho đường truyền vật lý?", options: [ "Giúp tăng độ dài cho mỗi cuộc gọi điện thoại", "Cho phép nhiều cuộc truyền khác nhau thực hiện xen kẽ, tận dụng đường truyền", "Loại bỏ hoàn toàn sự cố thất lạc gói tin", "Giúp máy tính không cần sử dụng địa chỉ IP"], answer: 1 },
+	{ q: "Giao thức HTTP (Hypertext Transmission Protocol) có chức năng gì?", options: [ "Quy định cách truyền thư điện tử", "Quy định cách biểu diễn (mã hoá) các trang web", "Thay thế địa chỉ IP bằng chữ", "Kiểm tra lỗi phần cứng mạng"], answer: 1 },
+	{ q: "Giao thức DNS (Domain Name System) có vai trò gì trên mạng Internet?", options: [ "Cho phép dùng hệ thống tên bằng chữ thay thế cho địa chỉ IP khó nhớ", "Chia dữ liệu thành các gói tin nhỏ", "Gán địa chỉ MAC cho card mạng", "Định tuyến đường đi ngắn nhất cho dữ liệu"], answer: 0 },
+	{ q: "Tên miền moet.edu.vn được dùng để thay thế cho thông tin nào?", options: [ "Địa chỉ MAC của máy tính cá nhân", "Địa chỉ IP của máy chủ Bộ Giáo dục và Đào tạo", "Cổng ứng dụng của dịch vụ gửi thư", "Mã kiểm tra lỗi của trang web"], answer: 1 },
+	{ q: "Chuỗi nhị phân 11000000 10101000 00000001 00000011 biểu diễn địa chỉ IPv4 nào ở dạng thập phân?", options: [ "10.25.0.255", "192.168.1.3", "131.214.23.16", "172.18.0.1"], answer: 1 },
+	{ q: "Tóm lại, vai trò chính của giao thức TCP trong mô hình TCP/IP là gì?", options: [ "Thiết lập địa chỉ và dẫn đường cho gói tin", "Đảm bảo việc truyền dữ liệu theo từng ứng dụng một cách chính xác, tin cậy và hiệu quả", "Chuyển đổi tên miền thành địa chỉ IP", "Mã hóa giao diện các trang web hiển thị trên trình duyệt"], answer: 1 },
+ 	
     ];
 
     let userAnswers = new Array(quizData.length).fill(null);
